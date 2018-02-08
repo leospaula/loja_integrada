@@ -1,0 +1,50 @@
+{
+  "name": "Loja Integrada",
+  "app_id": "loja_integrada",
+  "color": "",
+  "description": {
+    "pt_BR": "A Loja Integrada é a plataforma de e-commerce completa para a sua loja virtual.",
+    "en": ""
+	},
+  "website": "https://lojaintegrada.com.br",
+  "signup_url": "https://app.lojaintegrada.com.br/public/assinar",
+  "api_base_uri": {
+    "production": {
+			"uri": "https://api.awsli.com.br/v1",
+			"label": "Produção",
+			"default": true
+		}
+  },
+  "authentication": {
+    "type": "pass_through_header",
+    "fields": [
+      {
+        "name": "api_key",
+        "label": "Chave da API",
+        "mapping": "Authorization",
+        "prefix": "chave_api",
+        "type": "text",
+        "validations": [
+          {"name": "min_length", "value": 10}
+        ]
+      },
+      {
+        "name": "application_key",
+        "label": "Chave da Aplicação",
+        "mapping": "Authorization",
+        "prefix": "chave_aplicacao",
+        "type": "text",
+        "validations": [
+          {"name": "min_length", "value": 10}
+        ]
+      }
+    ],
+    "tutorial": {
+      "link": {},
+      "steps": []
+    },
+    "ping_request": {
+    	"method_name": "/codigo_html"
+  	}
+  }
+}
