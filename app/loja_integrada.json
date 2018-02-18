@@ -16,23 +16,19 @@
 		}
   },
   "authentication": {
-    "type": "pass_through_header",
+    "type": "pass_through_query_string",
     "fields": [
       {
-        "name": "api_key",
+        "name": "chave_api",
         "label": "Chave da API",
-        "mapping": "Authorization",
-        "prefix": "chave_api",
         "type": "text",
         "validations": [
           {"name": "min_length", "value": 10}
         ]
       },
       {
-        "name": "application_key",
+        "name": "chave_aplicacao",
         "label": "Chave da Aplicação",
-        "mapping": "Authorization",
-        "prefix": "chave_aplicacao",
         "type": "text",
         "validations": [
           {"name": "min_length", "value": 10}
