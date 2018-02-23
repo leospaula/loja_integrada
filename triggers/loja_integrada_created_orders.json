@@ -1,0 +1,196 @@
+{
+  "name":{
+    "pt_BR":"Pedido criado",
+    "en":"Order created"
+  },
+  "trigger_key":"created_orders",
+  "description":{
+    "pt_BR":"Quando um pedido for criado.",
+    "en":"When a order is created."
+  },
+  "trigger_fields":{
+    "type":"local",
+    "fields":[
+      {
+        "key":"numero.numero",
+        "name":"ID",
+        "description":"ID.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.situacao.codigo",
+        "name":"Situação Código",
+        "description":"Situação do Pedido",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.valor_desconto",
+        "name":"Disconto",
+        "description":"Disconto.",
+        "field_type":"decimal"
+      },
+      {
+        "key":"numero.valor_envio",
+        "name":"Frete",
+        "description":"Frete.",
+        "field_type":"decimal"
+      },
+      {
+        "key":"numero.valor_subtotal",
+        "name":"Valor Subtotal",
+        "description":"Valor Subtotal.",
+        "field_type":"decimal"
+      },
+      {
+        "key":"numero.valor_total",
+        "name":"Valor Total",
+        "description":"Valor Total.",
+        "field_type":"decimal"
+      },
+      {
+        "key":"numero.valor_total_text",
+        "name":"Valor Total em Reais (texto)",
+        "source":"format_currency(source[:numero][:valor_total])",
+        "description":"Valor total do pedido em Reais. Ex: R$ 42,00",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.data_modificacao",
+        "name":"Data/Hora",
+        "description":"Data/Hora.",
+        "field_type":"date_time"
+      },
+      {
+        "key":"numero.data_criacao",
+        "name":"Data/Hora Criado",
+        "description":"Data/Hora Criado.",
+        "field_type":"date_time"
+      },
+      {
+        "key":"numero.data_expiracao",
+        "name":"Data/Hora Expiração",
+        "description":"Data/Hora Expiração.",
+        "field_type":"date_time"
+      },
+      {
+        "key":"numero.cliente.id",
+        "name":"ID do Cliente",
+        "description":"ID do cliente.",
+        "field_type":"integer"
+      },
+      {
+        "key":"numero.pagamentos.nome",
+        "name":"Nomes dos Métodos de Pagamento",
+        "description":"nomes dos Métodos de pagamento.",
+        "source":"source[:numero][:pagamentos].map{|i|i[:forma_pagamento][:nome]}.join(%q(, ))",
+        "force_source": true,
+        "field_type":"string"
+      },
+      {
+        "key":"numero.itens.nome",
+        "name":"Nomes dos Itens",
+        "description":"Nomes dos itens",
+        "source":"source[:numero][:itens].map{|i|i[:nome]}.join(%q(, ))",
+        "force_source": true,
+        "field_type":"string"
+      },
+      {
+        "key":"numero.cliente.email",
+        "name":"Email do Cliente",
+        "description":"Email do cliente.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.cliente.nome",
+        "name":"Nome do Cliente",
+        "description":"Nome do Cliente.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.cliente.telefone_celular",
+        "name":"Telefone celular do Cliente",
+        "description":"Telefone celular do cliente.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.cliente.telefone_principal",
+        "name":"Telefone principal do Cliente",
+        "description":"Telefone principal do cliente.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.endereco",
+        "name":"Endereço de Entrega",
+        "description":"Endereço de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.cidade",
+        "name":"Cidade de Entrega",
+        "description":"Cidade de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.estado",
+        "name":"Estado de Entrega",
+        "description":"Estado de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.pais",
+        "name":"País de Entrega",
+        "description":"País de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.cep",
+        "name":"CEP de Entrega",
+        "description":"CEP de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.numero",
+        "name":"Nº de Entrega",
+        "description":"Nº de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.bairro",
+        "name":"Bairro de Entrega",
+        "description":"Bairro de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.tipo",
+        "name":"Tipo Pessoa de Entrega",
+        "description":"Tipo Pessoa de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.cpf",
+        "name":"CPF de Entrega",
+        "description":"CPF de entrega.",
+        "field_type":"string"
+      },
+      {
+        "key":"numero.endereco_entrega.cnpj",
+        "name":"CNPJ de Entrega",
+        "description":"CNPJ de entrega.",
+        "field_type":"string"
+      }
+    ]
+  },
+  "trigger_type": "polling",
+  "base_datetime_filter": {
+    "field": "data_modificacao",
+    "format": "%Y-%M-%D %H:%m:%s"
+  },
+  "request": {
+    "method_name": "/pedido/search/",
+    "params": {"limit": 10},
+    "response_field": "response",
+    "additional_resources": [
+      {"name": "numero", "method": "/pedido/"}
+    ]
+  }
+}
