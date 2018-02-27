@@ -69,6 +69,22 @@
         "field_type":"date_time"
       },
       {
+        "key":"numero.data_modificacao.date",
+        "name":"Data de modificação no formato (DD/MM/YYYY)",
+        "source":"format_date(source[:numero][:data_modificacao],%q(%d/%m/%Y))",
+        "force_source": true,
+        "description":"Data de modificação no formato (DD/MM/YYYY).",
+        "field_type":"date"
+      },
+      {
+        "key":"numero.data_modificacao.time",
+        "name":"Hora de modificação no formato (H:M:S)",
+        "source":"format_date(source[:numero][:data_modificacao],%q(%H:%M:%S))",
+        "force_source": true,
+        "description":"Hora de modificação no formato (H:M:S).",
+        "field_type":"time"
+      },
+      {
         "key":"numero.data_criacao",
         "name":"Data/Hora Criado",
         "description":"Data/Hora Criado.",
@@ -83,6 +99,22 @@
         "field_type":"date_time"
       },
       {
+        "key":"numero.data_criacao.date",
+        "name":"Data de criação no formato (DD/MM/YYYY)",
+        "source":"format_date(source[:numero][:data_criacao],%q(%d/%m/%Y))",
+        "force_source": true,
+        "description":"Data de criação no formato (DD/MM/YYYY).",
+        "field_type":"date"
+      },
+      {
+        "key":"numero.data_criacao.time",
+        "name":"Hora de criação no formato (H:M:S)",
+        "source":"format_date(source[:numero][:data_criacao],%q(%H:%M:%S))",
+        "force_source": true,
+        "description":"Hora de criação no formato (H:M:S).",
+        "field_type":"time"
+      },
+      {
         "key":"numero.data_expiracao",
         "name":"Data/Hora Expiração",
         "description":"Data/Hora Expiração.",
@@ -95,6 +127,22 @@
         "force_source": true,
         "description":"Data/Hora no formato (DD/MM/YYYY - H:M:S)",
         "field_type":"date_time"
+      },
+      {
+        "key":"numero.data_expiracao.date",
+        "name":"Data de expiração no formato (DD/MM/YYYY)",
+        "source":"format_date(source[:numero][:data_expiracao],%q(%d/%m/%Y))",
+        "force_source": true,
+        "description":"Data de expiração no formato (DD/MM/YYYY).",
+        "field_type":"date"
+      },
+      {
+        "key":"numero.data_expiracao.time",
+        "name":"Hora de expiração no formato (H:M:S)",
+        "source":"format_date(source[:numero][:data_expiracao],%q(%H:%M:%S))",
+        "force_source": true,
+        "description":"Hora de expiração no formato (H:M:S).",
+        "field_type":"time"
       },
       {
         "key":"numero.cliente.id",
