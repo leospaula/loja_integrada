@@ -259,7 +259,7 @@
   },
   "request": {
     "method_name": "/pedido/search/",
-    "params": {"limit": 10},
+    "params": {"limit": 50},
     "response_field": "response",
     "additional_resources": [
       {"name": "numero", "method": "/pedido/"}
